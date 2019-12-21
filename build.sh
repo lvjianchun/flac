@@ -78,6 +78,7 @@ build_file() {
 function link_js_file() {
   LAST_PWD=$(pwd)
   cd src/metaflac
+  emmake make
   em++ -I$BUILD_DIR/include -L${BUILD_DIR}/lib \
 	-Oz \
 	main.o operations.o operations_shorthand_cuesheet.o operations_shorthand_picture.o operations_shorthand_seektable.o operations_shorthand_streaminfo.o operations_shorthand_vorbiscomment.o options.o usage.o utils.o \
@@ -90,7 +91,8 @@ function link_js_file() {
 	-s SINGLE_FILE=1 \
 	-s ALLOW_MEMORY_GROWTH=1 \
 	-s RESERVED_FUNCTION_POINTERS=1 \
-	-s EXPORTED_FUNCTIONS="['_main']" \
+	-s EXPORTED_FUNCTIONS="['_metaflac']" \
+	-s EXTRA_EXPORTED_RUNTIME_METHODS="[cwrap, FS, getValue, setValue]" \
 
   cd $LAST_PWD
 }
