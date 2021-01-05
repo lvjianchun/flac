@@ -86,6 +86,7 @@ function link_js_file() {
 	../../src/share/grabbag/.libs/libgrabbag.a ../../src/share/replaygain_analysis/.libs/libreplaygain_analysis.a ../../out/lib/libogg.a ../../src/share/utf8/.libs/libutf8.a ../../src/share/getopt/.libs/libgetopt.a \
 	--closure 1 \
 	-o metaflac.js \
+	-s EXPORT_NAME="'MetaFlacModule'" \
 	-s USE_SDL=2 \
 	-s MODULARIZE=1 \
 	-s SINGLE_FILE=1 \
@@ -100,6 +101,6 @@ function link_js_file() {
 #install_tools
 #build_libogg
 #build_libtool
-build_file
+#build_file
 link_js_file
 
